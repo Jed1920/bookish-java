@@ -53,14 +53,14 @@ public class Main {
                      .mapToBean(Book.class)
                      .list());
 
-        for (Book book : books) {
-            List<Integer> book_copy = jdbi.withHandle(handle ->
-                    handle.createQuery("select id from book_copy where book_id = :id")
-                            .bind("id", book.getId())
-                            .mapTo(Integer.class)
-                            .list());
-            book.setQuantity(book_copy.size());
-            System.out.println(book);
-        }
+//        for (Book book : books) {
+//            List<Integer> book_copy = jdbi.withHandle(handle ->
+//                    handle.createQuery("select id from book_copy where book_id = :id")
+//                            .bind("id", book.getId())
+//                            .mapTo(Integer.class)
+//                            .list());
+//            book.setQuantity(book_copy.size());
+//            System.out.println(book);
+//        }
     }
 }
