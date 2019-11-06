@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!--@thymesVar id="busInfo" type="training.busboard.web.BusInfo"-->
+
+<head>
+    <title>Bookish - Library</title>
+
+    <link rel="stylesheet" href="/styles/general.css"/>
+    <link rel="stylesheet" href="/styles/navbar.css"/>
+    <link rel="stylesheet" href="/styles/library.css"/>
+</head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class = "add-title">
+
+<h2>Add a new title:</h2>
+
+<form action = "/add/add-title" method = "post">
+    <label>
+        <span>Title</span>
+    <input type = "text" name = "title">
+    </label>
+
+    <label>
+        Author
+    <input type = "text" name = "author">
+    </label>
+    <input type = "submit" value = "Submit Title">
+</form>
+
+</div>
+</body>
+</html>
