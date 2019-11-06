@@ -1,14 +1,17 @@
 package org.softwire.training.bookish.models.database;
 
-public class Book{
+import java.util.List;
+
+public class Book {
 
     private int id;
     private String title;
     private String author;
+    private List<Integer> bookCopys;
 
     @Override
-    public String toString(){
-        return String.format("%-5d | %-40s | %-20s", id, title,author);
+    public String toString() {
+        return String.format("%-5d | %-40s | %-20s", id, title, author);
     }
 
     public void setId(int id) {
@@ -23,6 +26,10 @@ public class Book{
         this.author = author;
     }
 
+    public void setBookCopys(List<Integer> bookCopys) {
+        this.bookCopys = bookCopys;
+    }
+
     public int getId() {
         return id;
     }
@@ -35,4 +42,7 @@ public class Book{
         return author;
     }
 
+    public List<Integer> getBookCopys() {
+        return bookCopys;
+    }
 }

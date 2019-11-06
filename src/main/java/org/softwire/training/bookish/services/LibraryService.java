@@ -17,18 +17,30 @@ public class LibraryService extends DatabaseService {
                 handle.createQuery("select * from book")
                         .mapToBean(Book.class)
                         .list());
+//        for (Book book : books) {
+//            List<Integer> book_copy = jdbi.withHandle(handle ->
+//                    handle.createQuery("select id from book_copy where book_id = :id")
+//                            .bind("id", book.getId())
+//                            .mapTo(Integer.class)
+//                            .list());
+//            book.setBookCopys(book_copy);
+//        }
+//        return books;
     }
 
-    public Map<Integer, Integer> getBookQuantity(List<Book> books) {
-        Map<Integer, Integer> quantity = new HashMap<>();
-        for (Book book : books) {
-            List<Integer> book_copy = jdbi.withHandle(handle ->
-                    handle.createQuery("select id from book_copy where book_id = :id")
-                            .bind("id", book.getId())
+    public Book getBook(int bookId) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("select * from book where id = :id")
+                        .bind("id", bookId)
+                        .mapToBean(Book.class)
+                        .findFirst().get());
+    }
+
+    public List<Integer> getQuantity(int bookId) {
+        return jdbi.withHandle(handle ->
+                handle.createQuery("select id from book_copy where book_id = :id")
+                            .bind("id", bookId)
                             .mapTo(Integer.class)
                             .list());
-            quantity.put(book.getId(), book_copy.size());
-        }
-        return quantity;
     }
 }

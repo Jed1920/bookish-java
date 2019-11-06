@@ -8,28 +8,7 @@
     <!--The rel attribute specifies the relationship between the current document and the linked document. Only used if the href attribute is present.-->
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
-    <link rel="stylesheet" href="/styles/about.css"/>
-    <style>
-        table,h1,h3 {
-          font-family: arial, sans-serif;
-          border-collapse: collapse;
-          width: 100%;
-        }
-        th{
-          border: 2px solid #dddddd;
-          text-align: left;
-          padding: 3px;
-          background-color:dodgerblue;
-          }
-        td{
-          border: 2px solid #dddddd;
-          text-align: left;
-          padding: 3px;
-        }
-        tr:nth-child(even) {
-        background-color: #f2f2f2;
-        }
-        </style>
+    <link rel="stylesheet" href="/styles/library.css"/>
 </head>
 
 <body>
@@ -38,18 +17,24 @@
     <!-- This element is replaced by the HTML in fragments/navbar.html -->
 </div>
 
-<div class = "container">
-    <table style="width:100%">
-        <tr>
-            <th> ID</th>
-            <th> Title</th>
-            <th> Author</th>
-        </tr>
-        <tr th:each="book: ${model.allBooks}">
-            <td> <span th:text="${book.id}"></span> </td>
-            <td> <span th:text="${book.title}"></span> </td>
-            <td> <span th:text="${book.author}"></span></td>
-        </tr>
+<div class="book-table-style">
+    <table>
+        <thead>
+            <tr>
+                <th width="10%"> ID</th>
+                <th width="50%"> Title</th>
+                <th width="40%"> Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="book: ${model.allBooks}">
+                <td><span th:text="${book.id}"></span></td>
+                <td>
+                    <a th:href="@{/library/{id}(id = ${book.id})}" class="quantity-button"><span th:text="${book.title}"></span></a>
+                </td>
+                <td><span th:text="${book.author}"></span></td>
+            </tr>
+        </tbody>
     </table>
 </div>
 </body>

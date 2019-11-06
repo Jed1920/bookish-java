@@ -1,0 +1,122 @@
+
+h2 {
+    font-family: "Segoe UI", sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+
+.technology-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.technology {
+    width: 30%;
+    background-color: #e9ecef;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.page {
+display:block;
+}
+.quantity-button  {
+    width:100%;
+    display:block;
+    background-color: rgba(86,96,106,.5);
+    border-radius: 15px;
+    padding: 3px 10px 5px 10px;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    color: #121416;
+    text-decoration: none;
+
+}
+.quantity-button:hover {
+
+    background-color: rgba(86,96,106,0.3);
+}
+
+.quantity{
+    font-family: "Segoe UI", sans-serif;
+    font-size: 30px;
+    color: #343a40;
+    text-align: center;
+    margin-left:15%;
+    margin-right:15%;
+}
+
+.book-table-style table {
+
+    width: 70%;
+    border: 3px solid #343a40;
+    margin-left:15%;
+    margin-right:15%;
+    margin-top:10px;
+    padding: 5px 5px;
+    border-collapse:collapse;
+}
+
+.book-table-style thead th{
+    border: 2px solid white;
+    padding: 5px 5px;
+    background-color: #4b545c;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+}
+
+.book-table-style tbody td{
+
+    border: 2px solid #343a40;
+    text-align: left;
+    padding: 3px;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+.id-table-style table {
+
+    width: 20%;
+    border: 3px solid #343a40;
+    margin-left:40%;
+    margin-right:40%;
+    margin-top:10px;
+    padding: 5px 5px;
+    border-collapse:collapse;
+}
+
+.id-table-style thead th{
+    border: 2px solid white;
+    padding: 5px 5px;
+    background-color: #4b545c;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+}
+
+.id-table-style tbody td{
+
+    border: 2px solid #343a40;
+    text-align: left;
+    padding: 3px;
+
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
