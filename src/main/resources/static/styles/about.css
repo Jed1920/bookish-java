@@ -56,12 +56,12 @@ h2 {
 }
 
 .add-tech-row label {
-    display: flex;
+
     flex-direction: row;
 }
 .add-tech-row span {
     min-width: 100px;
-    display: inline-block;
+
 }
 
 .add-tech-row input[type="text"] {

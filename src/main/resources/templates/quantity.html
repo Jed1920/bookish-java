@@ -15,33 +15,64 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
+<div class = "col">
+
+<div class="edit-title-button">
+    <a th:href="${model.editUrl}" class="edit-title-text"> Edit</a>
+</div>
+    <form th:action= "${model.editUrl}" method = "post">
+        <label>
+            <span>Title</span>
+            <input type = "text" name = "title">
+        </label>
+
+        <label>
+            Author
+            <input type = "text" name = "author">
+        </label>
+        <input type = "submit" value = "Submit Title">
+    </form>
+
 <div class="book-table-style">
     <table>
         <thead>
         <tr>
-            <th width="10%"><span th:text="${model.book.id}"></span></th>
-            <th width="50%"><span th:text="${model.book.title}"></span></th>
-            <th width="40%"><span th:text="${model.book.author}"></span></th>
+            <th width="10%"><span th:text="${model.id}"></span></th>
+            <th width="50%"><span th:text="${model.title}"></span></th>
+            <th width="40%"><span th:text="${model.author}"></span></th>
         </tr>
         </thead>
     </table>
     <p class="quantity"> Number of books = <span th:text="${model.quantity}"></span></p>
 </div>
-<div class="id-table-style">
-    <table>
-        <thead>
-        <tr>
-            <th width="30%"> ID</th>
-            <th width="70%"> Book Copy ID</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="bookCopy: ${model.book.bookCopys}">
-            <td><span th:text="${model.book.id}"></span></td>
-            <td><span th:text="${bookCopy}"></span></td>
-        </tr>
-        </tbody>
-    </table>
+</div>
+<div class="col">
+    <div class="add-copy">
+        <form th:action="${model.addCopyUrl}" method="post">
+            <input type="submit" value="Add Copy">
+        </form>
+    </div>
+    <div class="id-table-style">
+        <table>
+            <thead>
+            <tr>
+                <th width="10%"> ID</th>
+                <th width="60%"> Book Copy ID</th>
+                <th width="30%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="copy: ${model.copies}" height="50">
+                <td><span th:text="${model.id}"></span></td>
+                <td><span th:text="${copy.id}"></span></td>
+                <td><a th:href="${copy.deleteCopyUrl}" class="delete-button"> Delete Copy</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="delete-title-button">
+    <a th:href="${model.deleteTitleUrl}" class="delete-title-text"> Delete Title</a>
 </div>
 </body>
 </html>

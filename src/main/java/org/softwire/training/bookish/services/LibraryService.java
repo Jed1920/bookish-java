@@ -30,4 +30,41 @@ public class LibraryService extends DatabaseService {
                         .mapTo(Integer.class)
                         .list());
     }
+
+    public void addBookCopy(int bookId) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("INSERT INTO book_copy (book_id) VALUES (:book_id)")
+                        .bind("book_id", bookId)
+                        .execute()
+        );
+    }
+
+    public void deleteBookTitle(int id) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM book_copy WHERE book_id = :id")
+                        .bind("id", id)
+                        .execute());
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM book WHERE id = :id")
+                        .bind("id", id)
+                        .execute());
+    }
+
+    public void deleteBookCopy(int id) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("DELETE FROM book_copy WHERE id = :id")
+                        .bind("id", id)
+                        .execute()
+        );
+    }
+
+    public void editBook(Book book) {
+        jdbi.useHandle(handle ->
+                handle.createUpdate("UPDATE book SET title = :title, author = :author WHERE id = :id")
+                        .bind("title", book.getTitle())
+                        .bind("author", book.getAuthor())
+                        .bind("id", book.getId())
+                        .execute()
+        );
+    }
 }

@@ -16,31 +16,5 @@ public class AddService extends DatabaseService {
                         .execute()
         );
     }
-    public void addBookCopy(Book book, int bookId) {
-        jdbi.useHandle(handle ->
-                handle.createUpdate("INSERT INTO book_copy (id, book_id) VALUES (:id, :book_id)")
-                        .bind("id", book.getId())
-                        .bind("book_id", bookId)
-                        .execute()
-        );
-    }
-
-    public void deleteBook(int bookId) {
-        jdbi.useHandle(handle ->
-                handle.createUpdate("DELETE FROM book WHERE id = :id")
-                        .bind("id", bookId)
-                        .execute()
-        );
-    }
-
-    public void editBook(Book book) {
-        jdbi.useHandle(handle ->
-                handle.createUpdate("UPDATE book SET (title, author) VALUES (:title, :author) WHERE id = :id")
-                        .bind("title", book.getTitle())
-                        .bind("author", book.getAuthor())
-                        .bind("id", book.getId())
-                        .execute()
-        );
-    }
 
 }
