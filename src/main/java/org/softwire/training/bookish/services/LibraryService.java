@@ -3,6 +3,7 @@ package org.softwire.training.bookish.services;
 import org.softwire.training.bookish.models.database.Book;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,6 +14,30 @@ public class LibraryService extends DatabaseService {
                 handle.createQuery("SELECT * FROM book")
                         .mapToBean(Book.class)
                         .list());
+    }
+    public List<Book> searchAllBooks(String find) {
+        String search = (String.format("%%%s%%",find));
+        List<Book> searchList = jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM book WHERE title LIKE :find")
+                        .bind("find",search)
+                        .mapToBean(Book.class)
+                        .list());
+        searchList.addAll(jdbi.withHandle(handle ->
+                handle.createQuery("SELECT * FROM book WHERE author LIKE :find")
+                        .bind("find",search)
+                        .mapToBean(Book.class)
+                        .list()));
+        try {
+            Integer id = (Integer.parseInt(find));
+            searchList.addAll(jdbi.withHandle(handle ->
+                    handle.createQuery("SELECT * FROM book WHERE id LIKE :find")
+                            .bind("find", id)
+                            .mapToBean(Book.class)
+                            .list()));
+        }
+        catch(Exception e){}
+
+        return searchList;
     }
 
     public Book getBook(int bookId) {

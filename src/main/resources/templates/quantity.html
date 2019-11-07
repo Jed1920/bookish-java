@@ -15,36 +15,22 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class = "col">
-
-<div class="edit-title-button">
-    <a th:href="${model.editUrl}" class="edit-title-text"> Edit</a>
-</div>
-    <form th:action= "${model.editUrl}" method = "post">
-        <label>
-            <span>Title</span>
-            <input type = "text" name = "title">
-        </label>
-
-        <label>
-            Author
-            <input type = "text" name = "author">
-        </label>
-        <input type = "submit" value = "Submit Title">
-    </form>
-
-<div class="book-table-style">
-    <table>
-        <thead>
-        <tr>
-            <th width="10%"><span th:text="${model.id}"></span></th>
-            <th width="50%"><span th:text="${model.title}"></span></th>
-            <th width="40%"><span th:text="${model.author}"></span></th>
-        </tr>
-        </thead>
-    </table>
-    <p class="quantity"> Number of books = <span th:text="${model.quantity}"></span></p>
-</div>
+<div class="col">
+    <div class="book-table-style">
+        <table>
+            <thead>
+            <tr>
+                <form th:action="${model.editUrl}" class="edit-title-text" method="post">
+                    <th width="10%"><span th:text="${model.id}"></span></th>
+                    <th width="45%"><input type="text" name = "title" th:value="${model.title}"></th>
+                    <th width="35%"><input type="text" name = "author" th:value="${model.author}"></th>
+                    <th width="10%"><input type="submit" value="Edit"></th>
+                </form>
+            </tr>
+            </thead>
+        </table>
+        <p class="quantity"> Number of books = <span th:text="${model.quantity}"></span></p>
+    </div>
 </div>
 <div class="col">
     <div class="add-copy">

@@ -41,3 +41,38 @@ nav {
     text-decoration: none;
 }
 
+.navbar-search{
+    margin-left: 65%;
+    float: right;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 20px;
+    color: grey;
+    padding-top:10px;
+}
+
+.navbar-search input[type="search"]{
+    border:none;
+    background-color:white;
+    font-family: "Segoe UI", sans-serif;
+    color: grey;
+    margin-top: 10px;
+    border-radius:3px;
+}
+
+.navbar-search input[type="submit"]{
+    border:none;
+    background-color:grey;
+    float: right;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 20px;
+    color: white;
+    margin-left:3px;
+    border-radius: 15px;
+    margin-top: 6px;
+}
+
+.navbar-search input[type="submit"]:hover{
+    color: lightgray;
+}
+
+

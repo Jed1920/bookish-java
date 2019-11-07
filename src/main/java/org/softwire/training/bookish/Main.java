@@ -62,5 +62,7 @@ public class Main {
 //            book.setQuantity(book_copy.size());
 //            System.out.println(book);
 //        }
+        String s = "ado";
+        System.out.print(String.format("'%%%s%%'",s));
     }
 }

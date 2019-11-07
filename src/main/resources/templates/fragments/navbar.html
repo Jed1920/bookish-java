@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-
-
     <nav th:fragment="navbar">
         <div class="navbar-title">
             <a href="/">Bookish</a>
@@ -15,6 +13,13 @@
         </div>
         <div class="navbar-item">
             <a href="/add">Add</a>
+        </div>
+        <div class="navbar-search">
+            <form action = "/library/search">
+                Search <input type = "search" name="find">
+                <input type = "Submit">
+            </form>
+
         </div>
     </nav>
 

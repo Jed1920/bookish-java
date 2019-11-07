@@ -37,6 +37,18 @@ public class LibraryController {
 
         return new ModelAndView("library", "model", libraryPageModel);
     }
+
+    @RequestMapping("/search")
+    ModelAndView search(@ModelAttribute("find") String find) {
+
+        List<Book> searchBooks = libraryService.searchAllBooks(find);
+
+        LibraryPageModel libraryPageModel = new LibraryPageModel();
+        libraryPageModel.setAllBooks(searchBooks);
+
+        return new ModelAndView("library", "model", libraryPageModel);
+    }
+
     @RequestMapping("{id}")
     ModelAndView quantity(@PathVariable("id") Integer bookId) {
         Book book = libraryService.getBook(bookId);
