@@ -9,27 +9,30 @@
     <link rel="stylesheet" href="/styles/general.css"/>
     <link rel="stylesheet" href="/styles/navbar.css"/>
     <link rel="stylesheet" href="/styles/library.css"/>
+    <link rel="stylesheet" href="/styles/about.css"/>
 </head>
 
 <body>
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class = "add-book">
+<div>
 
 <h2>Add a new title:</h2>
 
 <form action = "/add/add-title" method = "post">
-    <label>
+    <label  class="add-tech-row">
         <span>Title</span>
     <input type = "text" name = "title">
     </label>
 
-    <label>
+    <label  class="add-tech-row">
         Author
     <input type = "text" name = "author">
     </label>
-    <input type = "submit" value = "Submit Title">
+    <div class = "add-book">
+    <input type = "submit" value = "Submit Title" >
+    </div>
 </form>
 
 </div>
