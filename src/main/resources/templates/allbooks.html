@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<nav th:include="fragments/navbar :: navbar"/>
+
+<h1>List of All Books</h1>
+
+<ol>
+    <li th:each="book: ${model.allBooks}">
+        <a th:href="@{/allbooks/{id}?id={id} (id=${book.id})}" name="${book.id"><p th:text="${book.title}"/></a>
+        <p th:text="${book.author}"/>
+    </li>
+</ol>
+
+</body>
+</html>

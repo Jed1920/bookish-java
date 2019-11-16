@@ -10,7 +10,7 @@ public class TechnologyService extends DatabaseService {
 
     public List<Technology> getAllTechnologies() {
         return jdbi.withHandle(handle ->
-                handle.createQuery("SELECT * FROM technologies")
+                handle.createQuery("SELECT * FROM :technologies")
                         .mapToBean(Technology.class)
                         .list()
         );
