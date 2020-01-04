@@ -1,22 +1,34 @@
 import React, { useState, useEffect } from 'react'
-import {fetchApi} from './FetchApi'
-import {BookModel} from'./BookModel'
+import {fetchApiBooks} from './FetchApi'
+import {BookModel , BookCard} from'./BookModel'
+import { Redirect } from 'react-router-dom';
 
-export const Book:React.FC = () => {
+interface AppProps{
+    authentication :boolean
+    setAuthor :(author:string) => void
+}
 
-
-    const [bookList, setBookList] = useState<BookModel[]>([]);
-
-
-    let url :string  = "http://localhost:8080/books/page1"
-   
-    useEffect(() =>{
-        fetchApi(url).then(parsedData => setBookList(parsedData));
-    }, []);
+export function Book(props :AppProps) {
     
-    if(bookList.length === 0){
-        return <div>loading</div>
-    } else {
-    return <div>{bookList}</div>
+        const [bookList, setBookList] = useState<BookModel[]>([]);
+        const [click, setClick] = useState(0)
+
+        let url :string  = "http://localhost:8080/books/page1"
+    
+        useEffect(() =>{
+            if(props.authentication){
+            fetchApiBooks(url).then(parsedData => setBookList(parsedData));
+            }
+        }, []);
+        if(!props.authentication){
+            return <Redirect to ="./login"/>
+        } else if(bookList.length === 0){
+            return <div>loading</div>
+        } else {
+        return (
+            <div className='container'>
+                {bookList.map(book => <div onClick={() =>setClick(book.id)}> <BookCard  book={book} click ={click} setAuthor ={props.setAuthor}/></div>)}
+            </div>
+            )       
     }
 }
